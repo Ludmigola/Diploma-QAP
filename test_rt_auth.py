@@ -1,17 +1,14 @@
 """
-
+Основной файл реализации тейст-кейсов
 """
-
-import pytest
-import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
-from settings import user_agreement_url, user_phone, user_mail, user_login, user_ls
-from settings import vk_title, ok_title, mail_title, ya_title, rt_title
+from settings import user_phone, user_mail, user_login, user_ls
+from settings import vk_title, ok_title, mail_title, ya_title
 from settings import valid_phone, valid_mail, valid_login, valid_ls, valid_password, invalid_password
 
 def get_login_form_auth_tabs(login_form):
@@ -183,8 +180,8 @@ def test_auth_with_phone(web_browser):
 
     auth_by_type(login_form, tab_phone, valid_phone, valid_password)
 
-    WebDriverWait(web_browser, 5).until(EC.title_is(rt_title))
-    assert web_browser.title == rt_title
+    lk = WebDriverWait(web_browser, 5).until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/main[1]/div[1]/div[2]/div[3]/h3[1]')))
+    assert lk.text == "Личные кабинеты"
 
 
 def test_auth_with_email(web_browser):
@@ -199,8 +196,8 @@ def test_auth_with_email(web_browser):
 
     auth_by_type(login_form, tab_email, valid_mail, valid_password)
 
-    WebDriverWait(web_browser, 5).until(EC.title_is(rt_title))
-    assert web_browser.title == rt_title
+    lk = WebDriverWait(web_browser, 5).until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/main[1]/div[1]/div[2]/div[3]/h3[1]')))
+    assert lk.text == "Личные кабинеты"
 
 
 def test_auth_with_login(web_browser):
@@ -215,9 +212,8 @@ def test_auth_with_login(web_browser):
 
     auth_by_type(login_form, tab_login, valid_login, valid_password)
 
-    WebDriverWait(web_browser, 5).until(EC.title_is(rt_title))
-    assert web_browser.title == rt_title
-
+    lk = WebDriverWait(web_browser, 5).until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/main[1]/div[1]/div[2]/div[3]/h3[1]')))
+    assert lk.text == "Личные кабинеты"
 
 def test_auth_with_ls(web_browser):
     '''
@@ -231,8 +227,8 @@ def test_auth_with_ls(web_browser):
 
     auth_by_type(login_form, tab_ls, valid_ls, valid_password)
 
-    WebDriverWait(web_browser, 5).until(EC.title_is(rt_title))
-    assert web_browser.title == rt_title
+    lk = WebDriverWait(web_browser, 5).until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/main[1]/div[1]/div[2]/div[3]/h3[1]')))
+    assert lk.text == "Личные кабинеты"
 
 
 def test_auth_with_login_and_invalid_password(web_browser):

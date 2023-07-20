@@ -1,15 +1,13 @@
 """
-
+Файл с настройками для тестов
 """
 
 target_url = "https://b2c.passport.rt.ru/"
-user_agreement_url = "https://b2c.passport.rt.ru/sso-static/agreement/agreement.html"
 
 vk_title = "VK ID"
 ok_title = "OK"
 mail_title = "Mail.Ru — Access request"
 ya_title = "Авторизация"
-rt_title = "Ростелеком ID"
 
 '''
 Ниже следует указать валидные телефон, почту, логи и лицевой счёт,
